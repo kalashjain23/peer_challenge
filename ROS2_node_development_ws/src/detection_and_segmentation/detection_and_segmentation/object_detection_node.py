@@ -14,6 +14,9 @@ class ObjectDetectionNode(Node):
         self.bridge_ = CvBridge()
 
         self.subscriber_ = self.create_subscription(Image, "/camera/image_raw", self.callback, 10)
+        
+        # for depth topics
+        # self.subscriber_ = self.create_subscription(Image, "/camera/depth/image_raw", self.callback, 10)
 
     def callback(self, data: Image):        
         image = self.bridge_.imgmsg_to_cv2(data, "bgr8")
